@@ -16,7 +16,6 @@ OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"
 ```
 ```bash
 cat ./maven/conf/settings.xml
-<<<<<<< c367422edb8fd969b631ad3291c50bd4dece61c1
 
 ...
 <mirror>
@@ -60,31 +59,6 @@ cat ./maven/conf/settings.xml
 [INFO]
 [INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ issue-quarkus-bypass-nexus ---
 [INFO] Nothing to compile - all classes are up to date
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  1.759 s
-[INFO] Finished at: 2019-12-31T10:14:17+01:00
-[INFO] ------------------------------------------------------------------------
-```
-
-**Test are failing**
-```bash
- mvn test                                                                                                                                   /d/dev/SourceRepoAlt/sandbox/issue-quarkus-bypass-nexus
->>>>>>> add documentation about reproducing issue & env
-[INFO] Scanning for projects...
-[INFO]
-[INFO] ------------< fr.zapho.sandbox:issue-quarkus-bypass-nexus >-------------
-[INFO] Building issue-quarkus-bypass-nexus 1.0-SNAPSHOT
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO]
-[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ issue-quarkus-bypass-nexus ---
-[INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] Copying 2 resources
-[INFO]
-[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ issue-quarkus-bypass-nexus ---
-[INFO] Nothing to compile - all classes are up to date
-<<<<<<< c367422edb8fd969b631ad3291c50bd4dece61c1
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
@@ -167,48 +141,6 @@ Downloading from central: https://repo.maven.apache.org/maven2/fr/zapho/chaos-pr
 [INFO] ------------------------------------------------------------------------
 [ERROR] Failed to execute goal on project issue-quarkus-bypass-nexus: Could not resolve dependencies for project fr.zapho.sandbox:issue-quarkus-bypass-nexus:jar:1.0-SNAPSHOT: Could not find artifact fr.zapho:chaos-proxy-quarkus:jar:1.2.0 in central (https://repo.maven.apache.org/maven2) -> [Help 1]
 ```
-=======
-[INFO]
-[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ issue-quarkus-bypass-nexus ---
-[INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] skip non existing resourceDirectory D:\dev\SourceRepoAlt\sandbox\issue-quarkus-bypass-nexus\src\test\resources
-[INFO]
-[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ issue-quarkus-bypass-nexus ---
-[INFO] Nothing to compile - all classes are up to date
-[INFO]
-[INFO] --- maven-surefire-plugin:2.22.1:test (default-test) @ issue-quarkus-bypass-nexus ---
-[INFO]
-[INFO] -------------------------------------------------------
-[INFO]  T E S T S
-[INFO] -------------------------------------------------------
-[INFO] Running fr.zapho.sandbox.HelloResourceTest
-[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.888 s <<< FAILURE! - in fr.zapho.sandbox.HelloResourceTest
-[ERROR] testHelloEndpoint  Time elapsed: 0.009 s  <<< ERROR!
-org.junit.jupiter.api.extension.TestInstantiationException: TestInstanceFactory [io.quarkus.test.junit.QuarkusTestExtension] failed to instantiate test class [fr.zapho.sandbox.HelloResourceTest]: Failed to create the boostrap class loader
-Caused by: java.lang.IllegalStateException: Failed to create the boostrap class loader
-Caused by: io.quarkus.bootstrap.BootstrapException: Failed to create the deployment classloader for fr.zapho.sandbox:issue-quarkus-bypass-nexus::jar:1.0-SNAPSHOT
-Caused by: io.quarkus.bootstrap.resolver.AppModelResolverException: Failed to resolve dependencies for fr.zapho.sandbox:issue-quarkus-bypass-nexus:jar:1.0-SNAPSHOT
-Caused by: org.eclipse.aether.resolution.DependencyResolutionException: Could not find artifact fr.zapho:chaos-proxy-quarkus:jar:1.2.0 in central (https://repo.maven.apache.org/maven2)
-Caused by: org.eclipse.aether.resolution.ArtifactResolutionException: Could not find artifact fr.zapho:chaos-proxy-quarkus:jar:1.2.0 in central (https://repo.maven.apache.org/maven2)
-Caused by: org.eclipse.aether.transfer.ArtifactNotFoundException: Could not find artifact fr.zapho:chaos-proxy-quarkus:jar:1.2.0 in central (https://repo.maven.apache.org/maven2)
 
-[INFO]
-[INFO] Results:
-[INFO]
-[ERROR] Errors:
-[ERROR]   HelloResourceTest.testHelloEndpoint  TestInstantiation TestInstanceFactory [i...
-[INFO]
-[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0
-[INFO]
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD FAILURE
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  5.590 s
-[INFO] Finished at: 2019-12-31T10:11:27+01:00
-[INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.22.1:test (default-test) on project issue-quarkus-bypass-nexus: There are test failures.
-```
-
->>>>>>> add documentation about reproducing issue & env
 # Fixing
 Adding a `<repository>` in pom.xml is fixing this. Not a good solution though.
